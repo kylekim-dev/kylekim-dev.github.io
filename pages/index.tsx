@@ -14,6 +14,8 @@ import Stack from "@mui/material/Stack";
 import Link from '@mui/material/Link';
 import { Skill } from "../types";
 import { User } from "../types";
+import { SkillCategory } from "../types";
+// import { Category } from "@mui/icons-material";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -43,18 +45,18 @@ export default function Home() {
   return (
     <div>
       <Container>
-      <Box sx={{ typography: 'body1' }} textAlign={"right"}>
-        <Link href="/kr">KR</Link> / <Link href="/">ENG</Link>
-      </Box>
+        <Box sx={{ typography: 'body1' }} textAlign={"right"}>
+          <Link href="/kr">KR</Link> / <Link href="/">ENG</Link>
+        </Box>
 
         <Grid container spacing={2}>
           <Grid item md={4}>
             <Stack textAlign={"right"}>
               <div>
                 <img
-                  src="/images/logo3.png"
+                  src="/images/logo.png"
                   alt="logo"
-                  width="200"
+                  width="170"
                   height="auto"
                 />
               </div>
@@ -62,99 +64,92 @@ export default function Home() {
                 <div>...Loading</div>
               ) : (
                 <div>
-                  <div>Email: {user.email}</div>
-                  <div>Phone: {user.phone}</div>
-                  <div>GitHub: {user.github}</div>
-                  <div>Address: {user.linkedIn}</div>
+                  <Box>
+                    <Typography>✉️ {user.email}</Typography>
+                  </Box>
+                  <Box>
+                    <Typography>📞 {user.phone}</Typography>
+                  </Box>
+                  <Box>
+                    <Link href={user.github} target="_blank">
+                      <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" />
+                    </Link>
+                  </Box>
+                  <Box>
+                    <Link href={user.linkedIn} target="_blank">
+                      <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+                    </Link>
+                  </Box>
                 </div>
               )}
             </Stack>
           </Grid>
           <Grid item md={8}>
-            <Box
-              sx={{
-                typography: "h4",
-                textTransform: "uppercase",
-                color: "text.secondary",
-                fontWeight: "bold",
-              }}
+            <Typography
+              variant="h4"
+              textTransform={"uppercase"}
+              color="default"
+              fontWeight={"bold"}
             >
-              Title
-            </Box>
+              SUMMARY
+            </Typography>
             <div>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+            Software Engineer with 6+ years of experience facilitating cutting-edge engineering solutions with a wide range of e-commerce application and technology skills. Familiar with modernized responsive web and REST API development. 
+            //Software Engineer with 6+ years of experience facilitating cutting-edge engineering solutions with a wide range of e-commerce application and technology skills. Familiar with modernized responsive web and REST API development. 
             </div>
-            <br />
             <Stack textAlign={"right"}>
-              <div>Lastest Updated: 11/11/2022</div>
-              <div className="signature">New Wave Lending</div>
+              <div>Lastest Updated: <b>11/18/2022</b></div>
+              <div className="signature">{user?.fullName}</div>
             </Stack>
           </Grid>
         </Grid>
 
-        <Grid container spacing={2}>
-          <Grid item md={12}>
-            <Typography
-              sx={{
-                typography: "h4",
-                color: "text.secondary",
-                fontWeight: "bold",
-              }}
-              align="center"
-            >
-              Section1
-            </Typography>
-          </Grid>
-          <Grid item md={4}>
-            <Typography align="right">Lorem Ipsum</Typography>
-          </Grid>
-          <Grid item md={8}>
-            {skills?.map((skill: Skill, index: number) => (
-              <Chip
-                key={`skill-${index}`}
-                label={`${skill.name}`}
-                color="primary"
-              />
-            ))}
-          </Grid>
-          <Grid item md={4}>
-            <Typography align="right">Lorem Ipsum</Typography>
-          </Grid>
-          <Grid item md={8}>
-            <Chip label="Lorem Ipsum" color="primary" />
-            <Chip label="Lorem Ipsum" color="primary" />
-            <Chip label="Lorem Ipsum" color="primary" />
-          </Grid>
-          <Grid item md={4}>
-            <Typography align="right">Lorem Ipsum</Typography>
-          </Grid>
-          <Grid item md={8}>
-            <Chip label="Lorem Ipsum" color="primary" />
-            <Chip label="Lorem Ipsum" color="primary" />
-            <Chip label="Lorem Ipsum" color="primary" />
-          </Grid>
-        </Grid>
+
+        <Typography
+          sx={{
+            typography: "h4",
+            color: "text.primary",
+            fontWeight: "bold",
+          }}
+          align="center"
+        >
+          SKILLS
+        </Typography>
+
+        {
+          Array.from(new Set(skills?.map(x => x.category))).map((category: SkillCategory) => (
+            (
+              <Grid container spacing={4}>
+                <Grid item md={2} >
+                  <Typography
+                    key={`Skill-Category-${category}`} 
+                    color="secondary"
+                    variant="h5"
+                    fontWeight="bold"
+                    align="right"
+                  >
+                    {category}
+                  </Typography>
+                </Grid>
+                <Grid item md={10}>
+                  {skills?.filter(x => x.category == category).map((item: Skill) => (
+                    <Box sx={{ mx: 1, display: 'inline' }}><img key={`skill-${item.imgShieldUrl}`} src={item.imgShieldUrl} alt={`kyle-skill-${item.imgShieldUrl}`} title={item.name} /></Box>
+                  ))}
+                </Grid>
+              </Grid>
+            )
+          ))
+        }
 
         <Grid container spacing={2}>
           <Grid item md={12}>
             <Typography
-              sx={{
-                typography: "h4",
-                color: "text.secondary",
-                fontWeight: "bold",
-              }}
+              typography="h4"
+              color="default"
+              fontWeight="bold"
               align="center"
             >
-              Section2
+              EXPERIENCES
             </Typography>
             <Stack direction={"row"} justifyContent="center">
               <Typography
@@ -438,7 +433,7 @@ export default function Home() {
           ))} */}
         </Grid>
       </Container>
-      
+
       <Script
         src="https://www.googletagmanager.com/gtag/js?id=G-B67XXE017S"
         strategy="afterInteractive"

@@ -7,6 +7,24 @@ export type User = {
 }
 
 export type Skill = {
-    type: number;
+    category: SkillCategory;
     name: string;
+    imgShieldUrl: string;
+}
+
+export type Experience = {
+    companyName: string;
+    startData: Date;
+    endDate: Date;
+    location: string;
+    isPresent: boolean;
+    descriptions: string[];
+}
+
+export enum SkillCategory {
+    BackEnd = "Back-End",
+    FrontEnd = "Front-End",
+    DevOps = "DevOps",
+    Framework = "Framework",
+    Workflow = "Workflow"
 }

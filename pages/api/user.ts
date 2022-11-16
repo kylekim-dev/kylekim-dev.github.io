@@ -4,11 +4,11 @@ import { User } from "../../types";
 
 // Default User
 const user: User = {
-  fullName: "Dongmin Kim",
+  fullName: "Kyle Kim",
   email: "kylegoforit@gmail.com",
-  phone: "9494474494",
-  github: "https://github.com/kylekim-dev",
-  linkedIn: "https://www.linkedin.com/in/kyle-kim-se/",
+  phone: "(949) 447-4494",
+  github: "https://kylekim-dev.github.io",
+  linkedIn: "https://www.linkedin.com/in/kyle-kim-se",
 };
 
 export default function handler(_req: NextApiRequest, res: NextApiResponse) {
