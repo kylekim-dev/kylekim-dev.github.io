@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Script from 'next/script';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Chip from "@mui/material/Chip";
@@ -437,6 +438,20 @@ export default function Home() {
           ))} */}
         </Grid>
       </Container>
+      
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-B67XXE017S"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-B67XXE017S');
+        `}
+      </Script>
     </div>
   );
 }
