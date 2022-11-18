@@ -15,12 +15,15 @@ import Link from '@mui/material/Link';
 import { Skill } from "../types";
 import { User } from "../types";
 import { SkillCategory } from "../types";
+import { ImgShieldUrlMap } from "../types";
+import { TechStack } from "../types";
 // import { Category } from "@mui/icons-material";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User>();
   const [skills, setSkills] = useState<Skill[]>();
+  const [imgShildMap, setImgShildMap] = useState<ImgShieldUrlMap[]>();
 
   useEffect(() => {
     setIsLoading(true);
@@ -35,6 +38,13 @@ export default function Home() {
       .then((data) => {
         setSkills(data);
       });
+
+    fetch("/api/imgShildMap")
+      .then((response) => response.json())
+      .then((data) => {
+        setImgShildMap(data);
+      })
+
     setIsLoading(false);
   }, []);
 
@@ -119,10 +129,9 @@ export default function Home() {
         {
           Array.from(new Set(skills?.map(x => x.category))).map((category: SkillCategory) => (
             (
-              <Grid container spacing={4}>
+              <Grid container spacing={4} key={category}>
                 <Grid item md={2} >
                   <Typography
-                    key={`Skill-Category-${category}`} 
                     color="secondary"
                     variant="h5"
                     fontWeight="bold"
@@ -133,13 +142,14 @@ export default function Home() {
                 </Grid>
                 <Grid item md={10}>
                   {skills?.filter(x => x.category == category).map((item: Skill) => (
-                    <Box sx={{ mx: 1, display: 'inline' }}><img key={`skill-${item.imgShieldUrl}`} src={item.imgShieldUrl} alt={`kyle-skill-${item.imgShieldUrl}`} title={item.name} /></Box>
+                    <Box key={item.imgShieldUrl} sx={{ mx: 1, display: 'inline' }}><img src={item.imgShieldUrl} alt={`kyle-skill-${item.imgShieldUrl}`} title={item.name} /></Box>
                   ))}
                 </Grid>
               </Grid>
             )
           ))
         }
+        <br />
 
         <Grid container spacing={2}>
           <Grid item md={12}>
@@ -217,6 +227,11 @@ export default function Home() {
                   Lorem Ipsum
                 </Typography>
                 <Stack direction={"row"}>
+                  {
+                      imgShildMap?.map((item: ImgShieldUrlMap) => (
+                        <Box sx={{ mx: 1, display: 'inline' }}><img key={`CompanyName-${item.imgUrl}`} src={item.imgUrl} /></Box>
+                      ))
+                  }
                   <Chip
                     color="default"
                     label="Current"
