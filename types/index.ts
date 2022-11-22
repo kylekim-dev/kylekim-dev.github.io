@@ -20,12 +20,21 @@ export type ImgShieldUrlMap = {
 export type Experience = {
     displayOrder: number;
     companyName: string;
-    startData: Date;
-    endDate: Date;
+    startData: string;
+    endDate: string;
     location: string;
-    isPresent: boolean;
+    // isPresent: boolean;
     usedTechStacks: TechStack[]; 
     descriptions: string[];
+}
+
+export type Education = {
+    displayOrder: number;
+    name: string;
+    startData: string;
+    endDate: string;
+    location: string;
+    major: string;
 }
 
 export enum SkillCategory {

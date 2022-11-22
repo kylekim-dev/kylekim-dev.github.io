@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Script from 'next/script';
+import * as moment from 'moment';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Chip from "@mui/material/Chip";
@@ -15,6 +16,7 @@ import Link from '@mui/material/Link';
 import { Skill } from "../types";
 import { User } from "../types";
 import { Experience } from "../types";
+import { Education } from "../types";
 import { SkillCategory } from "../types";
 import { ImgShieldUrlMap } from "../types";
 import { TechStack } from "../types";
@@ -24,6 +26,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User>();
   const [experiences, setExperiences] = useState<Experience[]>();
+  const [educations, setEducations] = useState<Education[]>();
   const [skills, setSkills] = useState<Skill[]>();
   const [imgShildMap, setImgShildMap] = useState<ImgShieldUrlMap[]>();
 
@@ -54,6 +57,12 @@ export default function Home() {
         setExperiences(data);
       });
 
+    fetch("/api/education")
+      .then((response) => response.json())
+      .then((data) => {
+        setEducations(data);
+      });
+
     setIsLoading(false);
   }, []);
 
@@ -75,7 +84,7 @@ export default function Home() {
                 <img
                   src="/images/logo.png"
                   alt="logo"
-                  width="170"
+                  width="140"
                   height="auto"
                 />
               </div>
@@ -91,12 +100,14 @@ export default function Home() {
                   </Box>
                   <Box>
                     <Link href={user.github} target="_blank">
-                      <img src="https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white" />
+                      <img src="https://img.icons8.com/fluency/25/null/github.png" />
+                      GitHub
                     </Link>
                   </Box>
                   <Box>
                     <Link href={user.linkedIn} target="_blank">
-                      <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
+                      <img src="https://img.icons8.com/fluency/30/null/linkedin.png" />
+                      Linked-In
                     </Link>
                   </Box>
                 </div>
@@ -113,8 +124,7 @@ export default function Home() {
               SUMMARY
             </Typography>
             <div>
-            Software Engineer with 6+ years of experience facilitating cutting-edge engineering solutions with a wide range of e-commerce application and technology skills. Familiar with modernized responsive web and REST API development. 
-            //Software Engineer with 6+ years of experience facilitating cutting-edge engineering solutions with a wide range of e-commerce application and technology skills. Familiar with modernized responsive web and REST API development. 
+              A full-stack web developer with 6+ years of experience. I have been implementing a loan pipeline with LOS in Mortgage Finance Industry. In E-commerce, developed CRM, WMS, created invoices and technician schedule management application. As a developer, I’m trying to optimize data with minimal time to develop software that reduces an error, easier to manage, and more efficient. I’m a fast-learner who enjoy to learn and challenge myself to maximize my ability.
             </div>
             <Stack textAlign={"right"}>
               <div>Lastest Updated: <b>11/18/2022</b></div>
@@ -123,6 +133,7 @@ export default function Home() {
           </Grid>
         </Grid>
 
+        {/* <Moment format="MM/DD/YYYY">{new Date()}</Moment> */}
 
         <Typography
           sx={{
@@ -178,292 +189,93 @@ export default function Home() {
                 }}
                 align="center"
               >
-                01/01/2001 ~ 12/31/2022
+                11/11/1111 ~ 22/22/2222
+                {/* { moment() } */}
+                {/* <Moment format="MM/DD/YYYY">2016-01-25</Moment> ~ <Moment format="MM/DD/YYYY">{ moment() }</Moment> (<Moment toNow>1976-04-19T12:59-0500</Moment>) */}
               </Typography>
-              <Chip
-                color="default"
-                label="1y 2m"
-                sx={{ borderRadius: "5px" }}
-                size="small"
-              />
             </Stack>
           </Grid>
-          <Grid md={4} item>
-            <Typography
-              sx={{
-                typography: "h6",
-                color: "text.secondary",
-                fontWeight: "bold",
-              }}
-              align="right"
-            >
-              Title Title Title
-            </Typography>
-            <Typography align="right">Sub Title</Typography>
-            <Typography align="right">
-              November, 2020 ~ November, 2022
-            </Typography>
-            <Stack direction="row" justifyContent="flex-end">
-              <Chip
-                color="primary"
-                label="Current"
-                sx={{ borderRadius: "5px" }}
-                size="small"
-                style={{ maxWidth: 100 }}
-              />
-              <Chip
-                color="info"
-                label="Current"
-                sx={{ borderRadius: "5px" }}
-                size="small"
-                style={{ maxWidth: 100 }}
-              />
-            </Stack>
-          </Grid>
-          <Grid md={8} item>
-            <ul style={{ margin: 0 }}>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>
+        </Grid>
+
+        {
+          experiences?.map((experienceItem: Experience) => (
+            <Grid container spacing={2} key={`experience-container-${experienceItem.companyName}`}>
+              <Grid md={4} item>
                 <Typography
                   sx={{
+                    typography: "h6",
                     fontWeight: "bold",
                   }}
+                  color="primary"
+                  align="right"
                 >
-                  Lorem Ipsum
+                  {experienceItem.companyName}
                 </Typography>
-                <Stack direction={"row"}>
+                <Typography align="right">
+                  {experienceItem.startData} ~ {experienceItem.endDate}
+                </Typography>
+                <Typography align="right"><i>{experienceItem.location}</i></Typography>
+              </Grid>
+              <Grid md={8} item>
+                <ul style={{ margin: 0 }}>
                   {
-                    experiences?.map((item: Experience) => (
-                      item.usedTechStacks?.map((techStack: TechStack) => (
-
-                        <div>{ techStack }</div>
-                        // <Box sx={{ mx: 1, display: 'inline' }}><img key={`CompanyName-${item.imgUrl}`} src={item.imgUrl} /></Box>
-                      ))
+                    experienceItem.descriptions.map((description: string) => (
+                      <li key={description}>{description}</li>
                     ))
                   }
-                  {/* {
-                      imgShildMap?.map((item: ImgShieldUrlMap) => (
-                        <Box sx={{ mx: 1, display: 'inline' }}><img key={`CompanyName-${item.imgUrl}`} src={item.imgUrl} /></Box>
-                      ))
-                  } */}
-                  <Chip
-                    color="default"
-                    label="Current"
-                    sx={{ borderRadius: "5px" }}
-                    size="small"
-                  />
-                  <Chip
-                    color="default"
-                    label="Current"
-                    sx={{ borderRadius: "5px" }}
-                    size="small"
-                  />
-                  <Chip
-                    color="default"
-                    label="Current"
-                    sx={{ borderRadius: "5px" }}
-                    size="small"
-                  />
-                  <Chip
-                    color="default"
-                    label="Current"
-                    sx={{ borderRadius: "5px" }}
-                    size="small"
-                  />
-                </Stack>
-              </li>
-            </ul>
-          </Grid>
-          <Grid md={4} item>
-            <Typography
-              sx={{
-                typography: "h6",
-                color: "text.secondary",
-                fontWeight: "bold",
-              }}
-              align="right"
-            >
-              Title Title Title
-            </Typography>
-            <Typography align="right">Sub Title</Typography>
-            <Typography align="right">
-              November, 2020 ~ November, 2022
-            </Typography>
-            <Stack direction="row" justifyContent="flex-end">
-              <Chip
-                color="primary"
-                label="Current"
-                sx={{ borderRadius: "5px" }}
-                size="small"
-                style={{ maxWidth: 100 }}
-              />
-              <Chip
-                color="info"
-                label="Current"
-                sx={{ borderRadius: "5px" }}
-                size="small"
-                style={{ maxWidth: 100 }}
-              />
-            </Stack>
-          </Grid>
-          <Grid md={8} item>
-            <ul style={{ margin: 0 }}>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>Lorem Ipsum is simply dummy text</li>
-              <li>
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                  }}
-                >
-                  Lorem Ipsum
-                </Typography>
-                <Stack direction={"row"}>
-                  <Chip
-                    color="default"
-                    label="Current"
-                    sx={{ borderRadius: "5px" }}
-                    size="small"
-                  />
-                  <Chip
-                    color="default"
-                    label="Current"
-                    sx={{ borderRadius: "5px" }}
-                    size="small"
-                  />
-                  <Chip
-                    color="default"
-                    label="Current"
-                    sx={{ borderRadius: "5px" }}
-                    size="small"
-                  />
-                  <Chip
-                    color="default"
-                    label="Current"
-                    sx={{ borderRadius: "5px" }}
-                    size="small"
-                  />
-                </Stack>
-              </li>
-            </ul>
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
-          <Grid item md={4}>
-            <Typography
-              sx={{
-                typography: "h4",
-                color: "text.secondary",
-                fontWeight: "bold",
-              }}
-              align="right"
-            >
-              Section3
-            </Typography>
-            <Stack direction={"row"} justifyContent="flex-end">
-              <Typography
-                sx={{
-                  color: "text.secondary",
-                  fontWeight: "bold",
-                }}
-                align="right"
-              >
-                01/01/2001 ~ 12/31/2022
-              </Typography>
-            </Stack>
-          </Grid>
-          <Grid item md={8}></Grid>
-          <Grid item md={4}>
-            <Typography align="right">Lorem Ipsum</Typography>
-          </Grid>
-          <Grid item md={8}>
-            <Chip label="Lorem Ipsum" color="primary" />
-            <Chip label="Lorem Ipsum" color="primary" />
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
-          <Grid item md={4}>
-            <Typography
-              sx={{
-                typography: "h4",
-                color: "text.secondary",
-                fontWeight: "bold",
-              }}
-              align="right"
-            >
-              Section4
-            </Typography>
-            <Stack direction={"row"} justifyContent="flex-end">
-              <Typography
-                sx={{
-                  color: "text.secondary",
-                  fontWeight: "bold",
-                }}
-                align="right"
-              >
-                01/01/2001 ~ 12/31/2022
-              </Typography>
-            </Stack>
-          </Grid>
-          <Grid item md={8}></Grid>
-          <Grid item md={4}>
-            <Typography align="right">Lorem Ipsum</Typography>
-          </Grid>
-          <Grid item md={8}>
-            <Chip label="Lorem Ipsum" color="primary" />
-            <Chip label="Lorem Ipsum" color="primary" />
-          </Grid>
-        </Grid>
-
-        <Grid container spacing={2}>
-          <Grid item md={4}>
-            <Typography
-              sx={{
-                typography: "h4",
-                color: "text.secondary",
-                fontWeight: "bold",
-              }}
-              align="right"
-            >
-              Section5
-            </Typography>
-          </Grid>
-          <Grid item md={8}></Grid>
-          {/* {Array.from({ length: 12 }, (_, i) => (
-            <Grid item md={3}>
-              <Card>
-                <CardContent>
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    Word of the Day
-                  </Typography>
-                  <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    adjective
-                  </Typography>
-                  <Typography variant="body2">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Learn More</Button>
-                </CardActions>
-              </Card>
+                </ul>
+                {
+                  experienceItem.usedTechStacks.map((usedSkill: TechStack) => (
+                    <span key={`${experienceItem.companyName}-${usedSkill}`}>{usedSkill} // </span>
+                  ))
+                }
+              </Grid>
             </Grid>
-          ))} */}
+          ))
+        }
+
+        <Grid container spacing={2}>
+          <Grid item md={12}>
+            <Typography
+              typography="h4"
+              color="default"
+              fontWeight="bold"
+              align="center"
+            >
+              EDUCATION
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={2}>
+          <Grid item md={12}>
+            <Typography align="center">Republic of Korea Army</Typography>
+            <Typography align="center">Information Security</Typography>
+            <Typography align="center">May 2009 ~ March 2011</Typography>
+            <Typography align="center">Seoul, Republic of Korea</Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={2}>
+          <Grid item md={12}>
+            <Typography
+              typography="h4"
+              color="default"
+              fontWeight="bold"
+              align="center"
+            >
+              SERVICE
+            </Typography>
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={2}>
+          <Grid item md={12}>
+            <Typography align="center">Republic of Korea Army</Typography>
+            <Typography align="center">Information Security</Typography>
+            <Typography align="center">May 2009 ~ March 2011</Typography>
+            <Typography align="center">Seoul, Republic of Korea</Typography>
+          </Grid>
         </Grid>
       </Container>
 
