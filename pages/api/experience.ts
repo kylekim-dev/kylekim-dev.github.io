@@ -12,8 +12,16 @@ const experiences: Experience[] = [
         endDate: "Present",
         location: "Whittier, CA",
         usedTechStacks: [
-            TechStack.Java,
-            TechStack.CSharp
+            TechStack.CSharp,
+            TechStack.DotNet,
+            TechStack.VueJS,
+            TechStack.Nuxt,
+            TechStack.Vuetify,
+            TechStack.HTML,
+            TechStack.Typescript,
+            TechStack.Javascript,
+            TechStack.AWS,
+            TechStack.BITBUCKET
         ],
         descriptions: [
             "Created 20K+ mortgage loan pipeline web application used by 2k+ active users using .NET, Vue.js and MS SQL Server.",

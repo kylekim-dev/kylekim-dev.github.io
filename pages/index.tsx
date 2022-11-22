@@ -28,7 +28,8 @@ export default function Home() {
   const [experiences, setExperiences] = useState<Experience[]>();
   const [educations, setEducations] = useState<Education[]>();
   const [skills, setSkills] = useState<Skill[]>();
-  const [imgShildMap, setImgShildMap] = useState<ImgShieldUrlMap[]>();
+  // const [imgShildMap, setImgShildMap] = useState<ImgShieldUrlMap[]>();
+  const [techStackImgMap, setTechStackImgMap] = useState<Map<TechStack, string>>();
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,7 +37,13 @@ export default function Home() {
     fetch("/api/imgShildMap")
       .then((response) => response.json())
       .then((data) => {
-        setImgShildMap(data);
+        var imgMap = new Map<TechStack, string>();
+
+        data.map((item: ImgShieldUrlMap) => (
+          imgMap.set(item.techStack, item.imgUrl)
+        ));
+    
+        setTechStackImgMap(imgMap);
       })
 
     fetch("/api/user")
@@ -223,12 +230,16 @@ export default function Home() {
                       <li key={description}>{description}</li>
                     ))
                   }
+                  <div>
+                  {
+                    experienceItem.usedTechStacks.map((usedSkill: TechStack) => (
+                      <Box sx={{ mr: 1, display: 'inline' }} key={`${experienceItem.companyName}-${usedSkill}`}>
+                        <img src={techStackImgMap?.get(usedSkill)} />
+                      </Box>
+                    ))
+                  }
+                  </div>
                 </ul>
-                {
-                  experienceItem.usedTechStacks.map((usedSkill: TechStack) => (
-                    <span key={`${experienceItem.companyName}-${usedSkill}`}>{usedSkill} // </span>
-                  ))
-                }
               </Grid>
             </Grid>
           ))
@@ -247,14 +258,20 @@ export default function Home() {
           </Grid>
         </Grid>
 
-        <Grid container spacing={2}>
-          <Grid item md={12}>
-            <Typography align="center">Republic of Korea Army</Typography>
-            <Typography align="center">Information Security</Typography>
-            <Typography align="center">May 2009 ~ March 2011</Typography>
-            <Typography align="center">Seoul, Republic of Korea</Typography>
-          </Grid>
-        </Grid>
+        {
+          educations?.map((education: Education) => (
+            <Grid container spacing={2} key={`education-${education.name}`}>
+              <Grid item md={12}>
+                <Typography align="center">{ education.major }</Typography>
+                <Typography variant="h6" color={'primary'} align="center">{ education.name }</Typography>
+                <Typography align="center">{ education.startData } ~ { education.endDate }</Typography>
+                <Typography align="center">{ education.location }</Typography>
+              </Grid>
+            </Grid>
+          ))
+        }
+
+        <br />
 
         <Grid container spacing={2}>
           <Grid item md={12}>
@@ -271,8 +288,8 @@ export default function Home() {
 
         <Grid container spacing={2}>
           <Grid item md={12}>
-            <Typography align="center">Republic of Korea Army</Typography>
             <Typography align="center">Information Security</Typography>
+            <Typography variant="h6" color={'primary'} align="center">Republic of Korea Army</Typography>
             <Typography align="center">May 2009 ~ March 2011</Typography>
             <Typography align="center">Seoul, Republic of Korea</Typography>
           </Grid>
