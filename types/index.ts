@@ -18,11 +18,13 @@ export type ImgShieldUrlMap = {
 }
 
 export type Experience = {
+    displayOrder: number;
     companyName: string;
     startData: Date;
     endDate: Date;
     location: string;
     isPresent: boolean;
+    usedTechStacks: TechStack[]; 
     descriptions: string[];
 }
 

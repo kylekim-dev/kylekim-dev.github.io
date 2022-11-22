@@ -14,6 +14,7 @@ import Stack from "@mui/material/Stack";
 import Link from '@mui/material/Link';
 import { Skill } from "../types";
 import { User } from "../types";
+import { Experience } from "../types";
 import { SkillCategory } from "../types";
 import { ImgShieldUrlMap } from "../types";
 import { TechStack } from "../types";
@@ -22,11 +23,19 @@ import { TechStack } from "../types";
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User>();
+  const [experiences, setExperiences] = useState<Experience[]>();
   const [skills, setSkills] = useState<Skill[]>();
   const [imgShildMap, setImgShildMap] = useState<ImgShieldUrlMap[]>();
 
   useEffect(() => {
     setIsLoading(true);
+
+    fetch("/api/imgShildMap")
+      .then((response) => response.json())
+      .then((data) => {
+        setImgShildMap(data);
+      })
+
     fetch("/api/user")
       .then((response) => response.json())
       .then((data) => {
@@ -39,11 +48,11 @@ export default function Home() {
         setSkills(data);
       });
 
-    fetch("/api/imgShildMap")
+    fetch("/api/experience")
       .then((response) => response.json())
       .then((data) => {
-        setImgShildMap(data);
-      })
+        setExperiences(data);
+      });
 
     setIsLoading(false);
   }, []);
@@ -228,10 +237,19 @@ export default function Home() {
                 </Typography>
                 <Stack direction={"row"}>
                   {
+                    experiences?.map((item: Experience) => (
+                      item.usedTechStacks?.map((techStack: TechStack) => (
+
+                        <div>{ techStack }</div>
+                        // <Box sx={{ mx: 1, display: 'inline' }}><img key={`CompanyName-${item.imgUrl}`} src={item.imgUrl} /></Box>
+                      ))
+                    ))
+                  }
+                  {/* {
                       imgShildMap?.map((item: ImgShieldUrlMap) => (
                         <Box sx={{ mx: 1, display: 'inline' }}><img key={`CompanyName-${item.imgUrl}`} src={item.imgUrl} /></Box>
                       ))
-                  }
+                  } */}
                   <Chip
                     color="default"
                     label="Current"
