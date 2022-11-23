@@ -10,6 +10,7 @@ export type Skill = {
     category: SkillCategory;
     name: TechStack;
     imgShieldUrl: string; 
+    advancedLevel: number;
 }
 
 export type Experience = {
@@ -46,7 +47,7 @@ export enum TechStack {
     Python = "Python",
     MSSQL = "MS-SQL",
     MySQL = "My-SQL",
-    HTML = "HTML4",
+    HTML = "HTML5",
     CSS = "CSS3",
     Javascript = "JavaScript",
     Typescript = "TypeScript",
