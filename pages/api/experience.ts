@@ -8,8 +8,9 @@ const experiences: Experience[] = [
     {
         displayOrder: 1,
         companyName: "New Wave Lending Group",
-        startData: "November, 2020",
-        endDate: "Present",
+        companyWebsite: "https://www.newwavelending.com",
+        startData: new Date('2020-11-15').toISOString(),
+        endDate: new Date().toISOString(),
         location: "Whittier, CA",
         usedTechStacks: [
             TechStack.CSharp,
@@ -18,6 +19,7 @@ const experiences: Experience[] = [
             TechStack.Nuxt,
             TechStack.Vuetify,
             TechStack.HTML,
+            TechStack.CSS,
             TechStack.Typescript,
             TechStack.Javascript,
             TechStack.AWS,
@@ -32,12 +34,21 @@ const experiences: Experience[] = [
     {
         displayOrder: 2,
         companyName: "AmWest Funding",
-        startData: "February, 2018",
-        endDate: "November, 2020",
+        companyWebsite: "https://www.amwestwholesale.com",
+        startData: new Date('2018-02-15').toISOString(),
+        endDate: new Date('2020-11-15').toISOString(),
         location: "Brea, CA",
         usedTechStacks: [
-            TechStack.Java,
-            TechStack.CSharp
+            TechStack.CSharp,
+            TechStack.DotNet,
+            TechStack.Javascript,
+            TechStack.HTML,
+            TechStack.CSS,
+            TechStack.Bootstrap,
+            TechStack.React,
+            TechStack.MUI,
+            TechStack.MSSQL,
+            TechStack.Azure
         ],
         descriptions: [
             "Created a credit report inquiry API integrated with CoreLogic.",
@@ -48,12 +59,22 @@ const experiences: Experience[] = [
     {
         displayOrder: 3,
         companyName: "Bada International",
-        startData: "January, 2016",
-        endDate: "February, 2018",
+        companyWebsite: "http://www.chunghousa.com",
+        startData: new Date('2016-01-25').toISOString(),
+        endDate: new Date('2018-02-15').toISOString(),
         location: "Irvine, CA",
         usedTechStacks: [
+            TechStack.CSharp,
+            TechStack.DotNet,
             TechStack.Java,
-            TechStack.CSharp
+            TechStack.Spring,
+            TechStack.Javascript,
+            TechStack.HTML,
+            TechStack.CSS,
+            TechStack.Bootstrap,
+            TechStack.MSSQL,
+            TechStack.MySQL,
+            TechStack.AWS
         ],
         descriptions: [
             "Development of customer and product management web applications using Spring Boot, jQuery, Bootstrap and MySQL.",

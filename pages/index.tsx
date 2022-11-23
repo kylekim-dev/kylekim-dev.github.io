@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Script from 'next/script';
-import * as moment from 'moment';
+import moment from 'moment';
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
 import Chip from "@mui/material/Chip";
@@ -18,7 +18,6 @@ import { User } from "../types";
 import { Experience } from "../types";
 import { Education } from "../types";
 import { SkillCategory } from "../types";
-import { ImgShieldUrlMap } from "../types";
 import { TechStack } from "../types";
 // import { Category } from "@mui/icons-material";
 
@@ -28,19 +27,20 @@ export default function Home() {
   const [experiences, setExperiences] = useState<Experience[]>();
   const [educations, setEducations] = useState<Education[]>();
   const [skills, setSkills] = useState<Skill[]>();
-  // const [imgShildMap, setImgShildMap] = useState<ImgShieldUrlMap[]>();
   const [techStackImgMap, setTechStackImgMap] = useState<Map<TechStack, string>>();
+  const [startDate, setStartDate] = useState<string>((new Date('2016-01-26').toISOString()));
+  const [currentDate, setCurrentDate] = useState<string>((new Date().toISOString()));
 
   useEffect(() => {
     setIsLoading(true);
 
-    fetch("/api/imgShildMap")
+    fetch("/api/skill")
       .then((response) => response.json())
       .then((data) => {
         var imgMap = new Map<TechStack, string>();
 
-        data.map((item: ImgShieldUrlMap) => (
-          imgMap.set(item.techStack, item.imgUrl)
+        data.map((skill: Skill) => (
+          imgMap.set(skill.name, skill.imgShieldUrl)
         ));
     
         setTechStackImgMap(imgMap);
@@ -153,29 +153,31 @@ export default function Home() {
           SKILLS
         </Typography>
 
+        <Grid container spacing={2}>
         {
           Array.from(new Set(skills?.map(x => x.category))).map((category: SkillCategory) => (
             (
-              <Grid container spacing={4} key={category}>
-                <Grid item md={2} >
+                <Grid item lg={4} key={category}>
                   <Typography
                     color="secondary"
                     variant="h5"
                     fontWeight="bold"
-                    align="right"
+                    align="center"
                   >
                     {category}
                   </Typography>
+                    {
+                      skills?.filter(x => x.category == category).map((skill: Skill) => (
+                      <Box key={skill.name} sx={{ display: 'inline' }}>
+                        <Chip sx={{ m: 0.5 }} color="primary" label={skill.name} variant="outlined" />
+                      </Box>
+                    ))
+                    }
                 </Grid>
-                <Grid item md={10}>
-                  {skills?.filter(x => x.category == category).map((item: Skill) => (
-                    <Box key={item.imgShieldUrl} sx={{ mx: 1, display: 'inline' }}><img src={item.imgShieldUrl} alt={`kyle-skill-${item.imgShieldUrl}`} title={item.name} /></Box>
-                  ))}
-                </Grid>
-              </Grid>
             )
           ))
         }
+          </Grid>
         <br />
 
         <Grid container spacing={2}>
@@ -196,9 +198,7 @@ export default function Home() {
                 }}
                 align="center"
               >
-                11/11/1111 ~ 22/22/2222
-                {/* { moment() } */}
-                {/* <Moment format="MM/DD/YYYY">2016-01-25</Moment> ~ <Moment format="MM/DD/YYYY">{ moment() }</Moment> (<Moment toNow>1976-04-19T12:59-0500</Moment>) */}
+                { moment(startDate).format('MM/DD/YYYY') } ~ { moment(currentDate).format('MM/DD/YYYY') } | { moment(currentDate).diff(moment(startDate), 'years') } years+
               </Typography>
             </Stack>
           </Grid>
@@ -208,18 +208,20 @@ export default function Home() {
           experiences?.map((experienceItem: Experience) => (
             <Grid container spacing={2} key={`experience-container-${experienceItem.companyName}`}>
               <Grid md={4} item>
-                <Typography
-                  sx={{
-                    typography: "h6",
-                    fontWeight: "bold",
-                  }}
-                  color="primary"
-                  align="right"
-                >
-                  {experienceItem.companyName}
-                </Typography>
+                <Link href={experienceItem.companyWebsite} target="_blank">
+                  <Typography
+                    sx={{
+                      typography: "h6",
+                      fontWeight: "bold",
+                    }}
+                    color="primary"
+                    align="right"
+                  >
+                    {experienceItem.companyName}
+                  </Typography>
+                </Link>
                 <Typography align="right">
-                  {experienceItem.startData} ~ {experienceItem.endDate}
+                  { moment(experienceItem.startData).format('MMMM, YYYY') } ~ { moment(currentDate).diff(moment(experienceItem.endDate), 'days') == 0 ? 'Present' : moment(experienceItem.endDate).format('MMMM, YYYY') }
                 </Typography>
                 <Typography align="right"><i>{experienceItem.location}</i></Typography>
               </Grid>

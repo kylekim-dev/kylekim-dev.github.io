@@ -8,22 +8,17 @@ export type User = {
 
 export type Skill = {
     category: SkillCategory;
-    name: string;
-    imgShieldUrl: string;
-}
-
-export type ImgShieldUrlMap = {
-    techStack: TechStack;
-    imgUrl: string; 
+    name: TechStack;
+    imgShieldUrl: string; 
 }
 
 export type Experience = {
     displayOrder: number;
     companyName: string;
+    companyWebsite: string;
     startData: string;
     endDate: string;
     location: string;
-    // isPresent: boolean;
     usedTechStacks: TechStack[]; 
     descriptions: string[];
 }
