@@ -264,12 +264,12 @@ const educationsData: Education[] = [
 export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User>(profile);
-  const [experiences, setExperiences] = useState<Experience[]>(experiencesData);
-  const [educations, setEducations] = useState<Education[]>(educationsData);
+  const [experiences] = useState<Experience[]>(experiencesData);
+  const [educations] = useState<Education[]>(educationsData);
   const [skills, setSkills] = useState<Skill[]>();
   const [techStackImgMap, setTechStackImgMap] = useState<Map<TechStack, string>>();
-  const [startDate, setStartDate] = useState<string>((new Date('2016-01-26').toISOString()));
-  const [currentDate, setCurrentDate] = useState<string>((new Date().toISOString()));
+  const [startDate] = useState<string>((new Date('2016-01-26').toISOString()));
+  const [currentDate] = useState<string>((new Date().toISOString()));
 
   useEffect(() => {
     setIsLoading(true);
