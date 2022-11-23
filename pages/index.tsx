@@ -25,7 +25,7 @@ const profile: User = {
   fullName: "Kyle Kim",
   email: "kylegoforit@gmail.com",
   phone: "(949) 447-4494",
-  github: "https://kylekim-dev.github.io",
+  github: "https://github.com/kylekim-dev",
   linkedIn: "https://www.linkedin.com/in/kyle-kim-se",
 };
 
