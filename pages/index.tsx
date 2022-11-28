@@ -19,6 +19,7 @@ import { Experience } from "../types";
 import { Education } from "../types";
 import { SkillCategory } from "../types";
 import { TechStack } from "../types";
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 // import { Category } from "@mui/icons-material";
 
 const profile: User = {
@@ -359,7 +360,7 @@ export default function Home() {
         </Box> */}
 
         <Grid container alignContent={"center"}>
-          <Grid item md={4} xs={12} textAlign="center">
+          <Grid item md={3} xs={12} textAlign="center">
             <Link href="/">
               <img
                 src="/images/logo.png"
@@ -367,7 +368,7 @@ export default function Home() {
               />
             </Link>
           </Grid>
-          <Grid item md={4} xs={12} textAlign="center">
+          <Grid item md={3} xs={12} textAlign="center">
               <Box sx={{ m:1 }}>
                 <Typography>✉️ {user.email}</Typography>
               </Box>
@@ -375,7 +376,7 @@ export default function Home() {
                 <Typography>📞 {user.phone}</Typography>
               </Box>
           </Grid>
-          <Grid item md={4} xs={12} textAlign="center">
+          <Grid item md={3} xs={12} textAlign="center">
               <Box sx={{ m:1 }} >
                 <img src="https://img.icons8.com/fluency/20/null/github.png" />
                 <Link href={user.github} target="_blank" title={user.github} style={{ textDecoration: 'none' }}>
@@ -387,6 +388,16 @@ export default function Home() {
                 <Link href={user.linkedIn} target="_blank" title={user.linkedIn} style={{ textDecoration: 'none' }}>
                   LinkedIn
                 </Link>
+              </Box>
+          </Grid>
+          <Grid item md={3} xs={12} textAlign="center">
+              <Box sx={{ m:1 }}>
+                <img src="https://img.icons8.com/color/20/null/microsoft-word-2019--v2.png"/>
+                <Link href={`/docs/Software-Developer-Resume-KyleKim.docx`} target="_blank" title={`Software-Developer-Resume-KyleKim.docx`} style={{ textDecoration: 'none' }} download>
+                  Resume <FileDownloadOutlinedIcon />
+                </Link>
+              </Box>
+              <Box sx={{ m:1 }}>
               </Box>
           </Grid>
         </Grid>
@@ -531,8 +542,8 @@ export default function Home() {
             </Typography>
 
             {
-              educations?.map((education: Education) => (
-                <Box>
+              educations?.map((education: Education, index: number) => (
+                <Box key={`educations-${index}`}>
                     <Typography align="center">{education.major}</Typography>
                     <Typography variant="h6" color={'primary'} align="center">{education.name}</Typography>
                     <Typography align="center">{education.startData} ~ {education.endDate}</Typography>
