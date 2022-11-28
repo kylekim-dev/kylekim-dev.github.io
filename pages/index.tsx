@@ -51,9 +51,9 @@ const experiencesData: Experience[] = [
       TechStack.BITBUCKET
     ],
     descriptions: [
-      "Created 20K+ mortgage loan pipeline web application used by 2k+ active users using .NET, Vue.js and MS SQL Server.",
-      "Created an application for LOS, streamline loan origination with modern user interfaces, helped underwriting, processed automation, document management and CRM features, and set up exact data structure, lending products and origination workflow.",
-      "Designed REST API, generated disclosure document based on loan data and delivered to borrowers to manage through DocuSign API."
+      "Created 20K+ mortgage loan pipeline web applications used by 2k+ active users using .NET, Vue.js, and MS SQL Server.",
+      "Created an application for LOS, streamlined loan origination with modern user interfaces, helped underwriting, processed automation, document management, and CRM features, and set up the exact data structure, lending products, and origination workflow.",
+      "Designed REST API, generated disclosure documents based on loan data and delivered them to borrowers to manage through DocuSign API."
     ]
   },
   {
@@ -102,11 +102,11 @@ const experiencesData: Experience[] = [
       TechStack.AWS
     ],
     descriptions: [
-      "Development of customer and product management web applications using Spring Boot, jQuery, Bootstrap and MySQL.",
-      "Development of in-house water purifier and filter inventory management system.",
+      "Development of customer and product management web applications using Spring Boot, jQuery, Bootstrap, and MySQL.",
+      "Development of an in-house water purifier and filter inventory management system.",
       "Increase work efficiency through product maintenance automatic scheduler development.",
       "Development of an invoice generation and delivery system.",
-      "Created e-commerce sites integrated with PayPal, Stripe, Authorize.",
+      "Created e-commerce sites integrated with PayPal, Stripe, and Authorize.",
       "Implemented 10+ responsive web applications.",
     ]
   },
@@ -403,7 +403,7 @@ export default function Home() {
               SUMMARY
             </Typography>
             <div>
-              A full-stack web developer with 6+ years of experience. I have been implementing a loan pipeline with LOS in Mortgage Finance Industry. In E-commerce, developed CRM, WMS, created invoices and technician schedule management application. As a developer, I’m trying to optimize data with minimal time to develop software that reduces an error, easier to manage, and more efficient. I’m a fast-learner who enjoy to learn and challenge myself to maximize my ability.
+            A full-stack web developer with 6+ years of experience. I have been implementing a loan pipeline with LOS in Mortgage Finance Industry. In E-commerce, developed CRM, and WMS created invoices and technician schedule management applications. As a developer, I’m trying to optimize data with minimal time to develop software that reduces errors, is easier to manage, and is more efficient. I’m a fast learner who enjoys learning and challenging myself to maximize my ability.
             </div>
           </Grid>
           <Grid item md={6} xs={12} textAlign={{ xs: "center", md: "left" }}>
