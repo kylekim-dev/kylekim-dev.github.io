@@ -33,6 +33,12 @@ export type Education = {
     major: string;
 }
 
+export type Website = {
+    name: string;
+    link: string;
+    banner: string;
+}
+
 export enum SkillCategory {
     BackEnd = "Back-End",
     FrontEnd = "Front-End",
