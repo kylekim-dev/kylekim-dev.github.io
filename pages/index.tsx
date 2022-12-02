@@ -6,13 +6,15 @@ import Container from "@mui/material/Container";
 import Chip from "@mui/material/Chip";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-// import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
-// import Card from "@mui/material/Card";
-// import CardActions from "@mui/material/CardActions";
-// import CardContent from "@mui/material/CardContent";
-// import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
 import Link from '@mui/material/Link';
+import Divider from '@mui/material/Divider';
 import { Skill } from "../types";
 import { User } from "../types";
 import { Experience } from "../types";
@@ -21,6 +23,7 @@ import { SkillCategory } from "../types";
 import { TechStack } from "../types";
 import { Website } from "../types";
 import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
+import { link } from "fs";
 // import { Category } from "@mui/icons-material";
 
 const profile: User = {
@@ -28,13 +31,14 @@ const profile: User = {
   email: "kylegoforit@gmail.com",
   phone: "(949) 447-4494",
   github: "https://github.com/kylekim-dev",
-  linkedIn: "https://www.linkedin.com/in/kyle-kim-se",
+  linkedIn: "https://www.linkedin.com/in/kylekim-dev",
 };
 
 const experiencesData: Experience[] = [
   {
     displayOrder: 1,
     companyName: "New Wave Lending Group",
+    title: "Software Engineer",
     companyWebsite: "https://www.newwavelending.com",
     startData: new Date('2020-11-15').toISOString(),
     endDate: new Date().toISOString(),
@@ -53,14 +57,18 @@ const experiencesData: Experience[] = [
       TechStack.BITBUCKET
     ],
     descriptions: [
-      "Created 20K+ mortgage loan pipeline web applications used by 2k+ active users using .NET, Vue.js, and MS SQL Server.",
-      "Created an application for LOS, streamlined loan origination with modern user interfaces, helped underwriting, processed automation, document management, and CRM features, and set up the exact data structure, lending products, and origination workflow.",
-      "Designed REST API, generated disclosure documents based on loan data and delivered them to borrowers to manage through DocuSign API."
+      "Worked on Back-end and Front-end tasks to implement LOS utilizing C#, MS-SQL, Vue.js and Typescript.",
+      "Created Loan Origination System that has 20K+ mortgage loan pipeline, and 1k+ active users, and developed the web application and the REST APIs.",
+      "Developed an automatic generation module of disclosure documents based on loan data to improve efficiency, accuracy, and reliability.",
+      "Designed module to send disclosure documents through the DocuSign API and improved work efficiency by 20%.",
+      "Creating automatic document indexing modules using barcodes, increased efficiency of document categorization works by 60%.",
+      "Programmed the loan eligibility assessment, Reduces the overall mortgage loan process time by 50%.",
     ]
   },
   {
     displayOrder: 2,
     companyName: "AmWest Funding",
+    title: "Software Engineer",
     companyWebsite: "https://www.amwestwholesale.com",
     startData: new Date('2018-02-15').toISOString(),
     endDate: new Date('2020-11-15').toISOString(),
@@ -78,14 +86,17 @@ const experiencesData: Experience[] = [
       TechStack.Azure
     ],
     descriptions: [
-      "Created a credit report inquiry API integrated with CoreLogic.",
-      "Development of in-house job posting and onboarding management applications.",
-      "Developed code following common security practices and development design patterns."
+      "Worked on Back-end and Front-end projects to implement LOS utilizing C#, .NET and MS-SQL.",
+      "Developed a credit report analysis module to verify mortgage loan eligibility, and Designed to automatically import liabilities (credit cards, other depts) to reduce simple data entry works hours..",
+      "Developed web applications and REST APIs for in-house job posting and employee onboarding management.",
+      "Worked on migrating informatica mappings between environments for development, testing and production implementation purposes.",
+      "Developed automatic closing fee recommendation, reduced average loan registration time by 10%.",
     ]
   },
   {
     displayOrder: 3,
     companyName: "Bada International",
+    title: "Junior Web Developer",
     companyWebsite: "http://www.chunghousa.com",
     startData: new Date('2016-01-25').toISOString(),
     endDate: new Date('2018-02-15').toISOString(),
@@ -104,11 +115,10 @@ const experiencesData: Experience[] = [
       TechStack.AWS
     ],
     descriptions: [
-      "Development of customer and product management web applications using Spring Boot, jQuery, Bootstrap, and MySQL.",
-      "Development of an in-house water purifier and filter inventory management system.",
-      "Increase work efficiency through product maintenance automatic scheduler development.",
-      "Development of an invoice generation and delivery system.",
-      "Created e-commerce sites integrated with PayPal, Stripe, and Authorize.",
+      "Created e-commerce sites integrated with PayPal, Strip and Authorize.net.",
+      "Developed water purifiers management web application that can manage account rights and customer resource.  ",
+      "Designed in-house water purifier and filter inventory management system.",
+      "Increase work accuracy and efficiency by 10% through the development of an automated maintenance service scheduler module.",
       "Implemented 10+ responsive web applications.",
     ]
   },
@@ -129,47 +139,56 @@ const websitesData: Website[] = [
   {
     name: "ChungHo USA",
     link: "http://www.chunghousa.com",
-    banner: ""
+    banner: "https://source.unsplash.com/random/200x200?sig=1",
+    description: ""
   },
   {
     name: "Simply Pure Baseball",
     link: "https://www.simplypurebaseball.com",
-    banner: ""
+    banner: "https://source.unsplash.com/random/200x200?sig=2",
+    description: ""
   },
   {
     name: "Bada Pro",
     link: "http://badapro.com/",
-    banner: ""
+    banner: "https://source.unsplash.com/random/200x200?sig=3",
+    description: ""
   },
   {
     name: "AmWest Funding",
     link: "https://www.amwestfunding.com",
-    banner: ""
+    banner: "https://source.unsplash.com/random/200x200?sig=4",
+    description: ""
   },
   {
     name: "AmWest Wholesale",
     link: "https://amwestwholesale.com",
-    banner: ""
+    banner: "https://source.unsplash.com/random/200x200?sig=5",
+    description: ""
   },
   {
     name: "New Wave Lending",
     link: "https://www.newwavelending.com",
-    banner: ""
+    banner: "https://source.unsplash.com/random/200x200?sig=6",
+    description: ""
   },
   {
     name: "New Wave Leding LOS System",
     link: "https://partner.newwavelending.com",
-    banner: ""
+    banner: "https://source.unsplash.com/random/200x200?sig=7",
+    description: ""
   },
   {
     name: "New Wave Lending Intranet",
     link: "https://intranet.newwavelending.com",
-    banner: ""
+    banner: "https://source.unsplash.com/random/200x200?sig=8",
+    description: ""
   },
   {
     name: "New Wave Lending RESTful API",
     link: "https://partnercoreapi.newwavelending.com/swagger/index.html",
-    banner: ""
+    banner: "https://source.unsplash.com/random/200x200?sig=9",
+    description: ""
   },
 ];
 
@@ -350,7 +369,7 @@ export default function Home() {
   const [startDate] = useState<string>((new Date('2016-01-26').toISOString()));
   const [currentDate] = useState<string>((new Date().toISOString()));
 
-  
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -412,46 +431,56 @@ export default function Home() {
           <Link href="/kr">KR</Link> / <Link href="/">ENG</Link>
         </Box> */}
 
-        <Grid container alignContent={"center"}>
-          <Grid item md={3} xs={12} textAlign="center">
-            <Link href="/">
-              <img
-                src="/images/logo.png"
-                alt="logo"
-              />
-            </Link>
+        <Grid container alignContent={"center"} spacing={2}>
+          <Grid item md={4} xs={12}>
+            <Card sx={{ minWidth: 100 }}>
+              <CardContent>
+                <Stack>
+                  <Link href="/">
+                    <img
+                      src="/images/logo.png"
+                      alt="logo"
+                    />
+                  </Link>
+                  <Link sx={{ mb: 1 }} href={`mailto:${user.email}`} style={{ textDecoration: 'none' }}>✉️ {user.email}</Link>
+                  <Link sx={{ mb: 1 }} href={`tel:${user.phone}`} style={{ textDecoration: 'none' }}>📞 {user.phone}</Link>
+                  <Stack sx={{ mb: 1 }} direction={'row'} spacing={1}>
+                    <img src="https://img.icons8.com/fluency/22/null/github.png" width={22} height={22} />
+                    <Link href={user.github} target="_blank" title={user.github} style={{ textDecoration: 'none' }}>GitHub</Link>
+                  </Stack>
+                  <Stack sx={{ mb: 1 }} direction={'row'} spacing={1}>
+                    <img src="https://img.icons8.com/color/22/null/microsoft-word-2019--v2.png" width={22} height={22} />
+                    <Link href={`/docs/Software-Developer-Resume-KyleKim.docx`} target="_blank" title={`Software-Developer-Resume-KyleKim.docx`} style={{ textDecoration: 'none' }} download>
+                      Resume
+                    </Link>
+                  </Stack>
+                </Stack>
+              </CardContent>
+            </Card>
           </Grid>
-          <Grid item md={3} xs={12} textAlign="center">
-            <Box sx={{ m: 1 }}>
-              <Typography>✉️ {user.email}</Typography>
-            </Box>
-            <Box sx={{ m: 1 }}>
-              <Typography>📞 {user.phone}</Typography>
-            </Box>
+          <Grid item md={4} xs={12} textAlign="center">
+            <div className="badge-base LI-profile-badge" data-locale="ko_KR" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="kylekim-dev" data-version="v1"><a className="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/kylekim-dev?trk=profile-badge"></a></div>
           </Grid>
-          <Grid item md={3} xs={12} textAlign="center">
-            <Box sx={{ m: 1 }} >
-              <img src="https://img.icons8.com/fluency/20/null/github.png" />
-              <Link href={user.github} target="_blank" title={user.github} style={{ textDecoration: 'none' }}>
-                GitHub
-              </Link>
-            </Box>
-            <Box sx={{ m: 1 }}>
-              <img src="https://img.icons8.com/fluency/20/null/linkedin.png" />
-              <Link href={user.linkedIn} target="_blank" title={user.linkedIn} style={{ textDecoration: 'none' }}>
-                LinkedIn
-              </Link>
-            </Box>
-          </Grid>
-          <Grid item md={3} xs={12} textAlign="center">
-            <Box sx={{ m: 1 }}>
-              <img src="https://img.icons8.com/color/20/null/microsoft-word-2019--v2.png" />
-              <Link href={`/docs/Software-Developer-Resume-KyleKim.docx`} target="_blank" title={`Software-Developer-Resume-KyleKim.docx`} style={{ textDecoration: 'none' }} download>
-                Resume <FileDownloadOutlinedIcon />
-              </Link>
-            </Box>
-            <Box sx={{ m: 1 }}>
-            </Box>
+          <Grid item md={4} xs={12}>
+            <Card sx={{ minWidth: 100 }}>
+              <CardContent>
+                <Typography
+                  typography="h4"
+                  color="default"
+                  fontWeight="bold"
+                >
+                  SKILLS
+                </Typography>
+                <ul>
+                  <li>C# (.NET)</li>
+                  <li>MS-SQL</li>
+                  <li>JavaScript / TypeScript</li>
+                  <li>HTML5 / CSS3</li>
+                  <li>React / Vue.js</li>
+                  <li>AWS</li>
+                </ul>
+              </CardContent>
+            </Card>
           </Grid>
         </Grid>
 
@@ -462,10 +491,10 @@ export default function Home() {
               textTransform={"uppercase"}
               color="default"
               fontWeight={"bold"}
-              textAlign="center"
             >
               SUMMARY
             </Typography>
+            <Divider />
             <div>
               I am a Full-Stack developer for over 6 years. I have experienced in Financial Institute and E-commerce.
               In E-Commerce, I have experienced in developing CRM, WMS included inventory system, Filter management System, Technician Scheduling system, Automated invoicing system, API with payment systems(Stripe, PayPal, and Athorized.net) and 10+ responsive B2B & B2C website.
@@ -481,17 +510,57 @@ export default function Home() {
           </Grid>
         </Grid>
 
-        <Typography
-          sx={{
-            typography: "h4",
-            color: "text.primary",
-            fontWeight: "bold",
-          }}
-          align="center"
-        >
-          SKILLS
-        </Typography>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography
+              typography="h4"
+              color="default"
+              fontWeight="bold"
+            >
+              EDUCATION
+            </Typography>
+            <Divider />
+          </Grid>
+          <Grid item xs={12}>
+            <Stack direction={'row'} justifyContent="space-between" alignItems="flex-end" spacing={2}>
+              <Typography
+                sx={{
+                  typography: "h5",
+                  fontWeight: "bold",
+                }}
+                align="center"
+              >
+                Korea Aerospace University
+              </Typography>
+              <Typography
+                sx={{
+                  color: "text.secondary",
+                  fontWeight: "bold",
+                }}
+                align="center"
+              >
+                Class of 2015
+              </Typography>
+            </Stack>
+            <Typography>B.S. in Computer Science</Typography>
+            <Typography><b>Related coursework:</b>  Data Structure | Operating Systems | Embedded System Design | Multimedia Engineering.</Typography>
+          </Grid>
+        </Grid>
 
+        {/* <Grid container spacing={2}>
+          <Grid item md={12}>
+            <Typography
+              sx={{
+                typography: "h4",
+                color: "text.primary",
+                fontWeight: "bold",
+              }}
+            >
+              SKILLS
+            </Typography>
+            <Divider />
+          </Grid>
+        </Grid>
         <Grid container spacing={2}>
           {
             Array.from(new Set(skills?.map(x => x.category))).map((category: SkillCategory) => (
@@ -516,20 +585,20 @@ export default function Home() {
               )
             ))
           }
-        </Grid>
+        </Grid> */}
         <br />
 
         <Grid container spacing={2}>
           <Grid item md={12}>
-            <Typography
-              typography="h4"
-              color="default"
-              fontWeight="bold"
-              align="center"
-            >
-              EXPERIENCES
-            </Typography>
-            <Stack direction={"row"} justifyContent="center">
+            <Stack direction={'row'} justifyContent="space-between" alignItems="flex-end" spacing={2}>
+              <Typography
+                typography="h4"
+                color="default"
+                fontWeight="bold"
+                align="left"
+              >
+                EXPERIENCES
+              </Typography>
               <Typography
                 sx={{
                   color: "text.secondary",
@@ -540,6 +609,8 @@ export default function Home() {
                 {moment(startDate).format('MM/DD/YYYY')} ~ {moment(currentDate).format('MM/DD/YYYY')} | {moment(currentDate).diff(moment(startDate), 'years')} years+
               </Typography>
             </Stack>
+
+            <Divider />
           </Grid>
         </Grid>
 
@@ -547,22 +618,27 @@ export default function Home() {
           experiences?.map((experienceItem: Experience) => (
             <Grid container spacing={2} key={`experience-container-${experienceItem.companyName}`}>
               <Grid xs={12} item>
-                <Link href={experienceItem.companyWebsite} target="_blank" style={{ textDecoration: 'none' }}>
+                <Stack direction={'row'} justifyContent="space-between" alignItems="flex-end" spacing={2}>
+                  <Link href={experienceItem.companyWebsite} target="_blank" style={{ textDecoration: 'none' }}>
+                    <Typography
+                      sx={{
+                        typography: "h6",
+                        fontWeight: "bold",
+                      }}
+                      align="center"
+                    >
+                      {experienceItem.title} | {experienceItem.companyName} - {experienceItem.location}
+                    </Typography>
+                  </Link>
                   <Typography
                     sx={{
-                      typography: "h6",
-                      fontWeight: "bold",
+                      color: "text.secondary",
                     }}
-                    color="primary"
                     align="center"
                   >
-                    {experienceItem.companyName}
+                    {moment(experienceItem.startData).format('MMMM, YYYY')} ~ {moment(currentDate).diff(moment(experienceItem.endDate), 'days') == 0 ? 'Present' : moment(experienceItem.endDate).format('MMMM, YYYY')} | {moment(experienceItem.endDate).diff(moment(experienceItem.startData), 'years')} years+
                   </Typography>
-                </Link>
-                <Typography align="center">
-                  {moment(experienceItem.startData).format('MMMM, YYYY')} ~ {moment(currentDate).diff(moment(experienceItem.endDate), 'days') == 0 ? 'Present' : moment(experienceItem.endDate).format('MMMM, YYYY')} | {moment(experienceItem.endDate).diff(moment(experienceItem.startData), 'years')} years+
-                </Typography>
-                <Typography align="center"><i>{experienceItem.location}</i></Typography>
+                </Stack>
               </Grid>
               <Grid xs={12} item>
                 <ul style={{ margin: 0 }}>
@@ -586,28 +662,9 @@ export default function Home() {
           ))
         }
 
-        <Grid container spacing={2}>
-          <Grid item md={6} xs={12}>
-            <Typography
-              typography="h4"
-              color="default"
-              fontWeight="bold"
-              align="center"
-            >
-              EDUCATION
-            </Typography>
 
-            {
-              educations?.map((education: Education, index: number) => (
-                <Box key={`educations-${index}`}>
-                  <Typography align="center">{education.major}</Typography>
-                  <Typography variant="h6" color={'primary'} align="center">{education.name}</Typography>
-                  <Typography align="center">{education.startData} ~ {education.endDate}</Typography>
-                  <Typography align="center">{education.location}</Typography>
-                </Box>
-              ))
-            }
-          </Grid>
+
+        {/* <Grid container spacing={2}>
 
           <Grid item md={6} xs={12}>
             <Typography
@@ -625,12 +682,11 @@ export default function Home() {
               <Typography align="center">Seoul, Republic of Korea</Typography>
             </Box>
           </Grid>
-        </Grid>
+        </Grid> */}
 
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            
-          <Typography
+            <Typography
               typography="h4"
               color="default"
               fontWeight="bold"
@@ -638,21 +694,40 @@ export default function Home() {
             >
               WORKS
             </Typography>
-            <Stack direction={"row"} spacing={2}>
+            <Divider />
+          </Grid>
             {
               websites?.map((website: Website, index: number) => (
-                  <Link href={website.link} target="_blank" key={`website-${website.name}-${index}`}>{website.name}</Link>
+                <Grid item md={3} xs={12}  key={`website-${website.name}-${index}`}>
+
+              <Card sx={{ maxWidth: 345 }}>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={website.banner}
+                    alt={website.link}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom fontWeight={'bold'} component="div">
+                      { website.name }
+                    </Typography>
+                    {/* <Typography variant="body2" color="text.secondary">
+                      Lizards are a widespread group of squamate reptiles, with over 6,000
+                      species, ranging across all continents except Antarctica
+                    </Typography> */}
+                  </CardContent>
+                </CardActionArea>
+                <CardActions>
+                    <Button style={{ marginLeft: "auto" }} href={website.link} target="_blank" size="small" color="primary" variant="contained" disableElevation>
+                      Learn More
+                    </Button>
+                </CardActions>
+              </Card>
+                </Grid>
               ))
             }
-            </Stack>
-          </Grid>
-          
         </Grid>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <br />
         <br />
         <br />

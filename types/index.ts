@@ -15,6 +15,7 @@ export type Skill = {
 
 export type Experience = {
     displayOrder: number;
+    title: string;
     companyName: string;
     companyWebsite: string;
     startData: string;
@@ -37,6 +38,7 @@ export type Website = {
     name: string;
     link: string;
     banner: string;
+    description: string;
 }
 
 export enum SkillCategory {
