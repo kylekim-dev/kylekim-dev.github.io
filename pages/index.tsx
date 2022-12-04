@@ -116,7 +116,7 @@ const experiencesData: Experience[] = [
     ],
     descriptions: [
       "Created e-commerce sites integrated with PayPal, Strip and Authorize.net.",
-      "Developed water purifiers management web application that can manage account rights and customer resource.  ",
+      "Developed water purifiers management web application that can manage account rights and customer resource.",
       "Designed in-house water purifier and filter inventory management system.",
       "Increase work accuracy and efficiency by 10% through the development of an automated maintenance service scheduler module.",
       "Implemented 10+ responsive web applications.",
