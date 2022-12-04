@@ -431,7 +431,7 @@ export default function Home() {
           <Link href="/kr">KR</Link> / <Link href="/">ENG</Link>
         </Box> */}
 
-        <Grid container alignContent={"center"} spacing={2}>
+        {/* <Grid container alignContent={"center"} spacing={2}>
           <Grid item md={4} xs={12}>
             <Card sx={{ minWidth: 100 }}>
               <CardContent>
@@ -482,7 +482,7 @@ export default function Home() {
               </CardContent>
             </Card>
           </Grid>
-        </Grid>
+        </Grid> */}
 
         <Grid container spacing={2}>
           <Grid item md={12}>
