@@ -431,7 +431,7 @@ export default function Home() {
           <Link href="/kr">KR</Link> / <Link href="/">ENG</Link>
         </Box> */}
 
-        {/* <Grid container alignContent={"center"} spacing={2}>
+        <Grid container alignContent={"center"} spacing={2}>
           <Grid item md={4} xs={12}>
             <Card sx={{ minWidth: 100 }}>
               <CardContent>
@@ -458,9 +458,9 @@ export default function Home() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item md={4} xs={12} textAlign="center">
+          {/* <Grid item md={4} xs={12} textAlign="center">
             <div className="badge-base LI-profile-badge" data-locale="ko_KR" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="kylekim-dev" data-version="v1"><a className="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/kylekim-dev?trk=profile-badge"></a></div>
-          </Grid>
+          </Grid> */}
           <Grid item md={4} xs={12}>
             <Card sx={{ minWidth: 100 }}>
               <CardContent>
@@ -482,7 +482,7 @@ export default function Home() {
               </CardContent>
             </Card>
           </Grid>
-        </Grid> */}
+        </Grid>
 
         <Grid container spacing={2}>
           <Grid item md={12}>
