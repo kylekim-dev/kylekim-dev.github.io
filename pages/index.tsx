@@ -57,12 +57,12 @@ const experiencesData: Experience[] = [
       TechStack.BITBUCKET
     ],
     descriptions: [
-      "Worked on Back-end and Front-end tasks to implement LOS utilizing C#, MS-SQL, Vue.js and Typescript.",
-      "Created Loan Origination System that has 20K+ mortgage loan pipeline, and 1k+ active users, and developed the web application and the REST APIs.",
+      "Worked on Back-end and Front-end tasks to implement LOS utilizing C#, MS-SQL, Vue.js, and Typescript.",
+      "Created Loan Origination System that has a 20K+ mortgage loan pipeline, and 1k+ active users, and developed the web application and the REST APIs.",
       "Developed an automatic generation module of disclosure documents based on loan data to improve efficiency, accuracy, and reliability.",
-      "Designed module to send disclosure documents through the DocuSign API and improved work efficiency by 20%.",
-      "Creating automatic document indexing modules using barcodes, increased efficiency of document categorization works by 60%.",
-      "Programmed the loan eligibility assessment, Reduces the overall mortgage loan process time by 50%.",
+      "Designed a module to send disclosure documents through the DocuSign API and improved work efficiency by 20%.",
+      "Created automatic document indexing modules using barcodes, increased efficiency of document categorization works by 60%.",
+      "Programmed the loan eligibility assessment, and reduces the overall mortgage loan process time by 50%.",
     ]
   },
   {
@@ -86,11 +86,12 @@ const experiencesData: Experience[] = [
       TechStack.Azure
     ],
     descriptions: [
-      "Worked on Back-end and Front-end projects to implement LOS utilizing C#, .NET and MS-SQL.",
-      "Developed a credit report analysis module to verify mortgage loan eligibility, and Designed to automatically import liabilities (credit cards, other depts) to reduce simple data entry works hours..",
-      "Developed web applications and REST APIs for in-house job posting and employee onboarding management.",
-      "Worked on migrating informatica mappings between environments for development, testing and production implementation purposes.",
-      "Developed automatic closing fee recommendation, reduced average loan registration time by 10%.",
+      "Worked on Back-end and Front-end projects to implement LOS utilizing C#, .NET, and MS-SQL.",
+      "Developed a credit report analysis module to verify mortgage loan eligibility, and Designed it to automatically import liabilities (credit cards, other debts) to reduce simple data entry works hours.",
+      "Developed web applications and REST APIs for an in-house job posting and employee onboarding management.",
+      "Reduced loan registration process time by 20% through loan fee recommendation module design.",
+      "Worked on migrating Informatica mappings between environments for development, testing, and production implementation purposes.",
+      "Developed automatic closing fee recommendation, and reduced average loan registration time by 10%.",
     ]
   },
   {
@@ -115,10 +116,10 @@ const experiencesData: Experience[] = [
       TechStack.AWS
     ],
     descriptions: [
-      "Created e-commerce sites integrated with PayPal, Strip and Authorize.net.",
-      "Developed water purifiers management web application that can manage account rights and customer resource.",
+      "Created e-commerce sites integrated with PayPal, Strip, and Authorize.net.",
+      "Developed a water purifiers management web application to manage account rights and customer resources.",
       "Designed in-house water purifier and filter inventory management system.",
-      "Increase work accuracy and efficiency by 10% through the development of an automated maintenance service scheduler module.",
+      "Increased work accuracy and efficiency by 10% through the development of an automated maintenance service scheduler module.",
       "Implemented 10+ responsive web applications.",
     ]
   },
@@ -432,11 +433,11 @@ export default function Home() {
         </Box> */}
 
         <Grid container alignContent={"center"} spacing={2}>
-          <Grid item md={4} xs={12}>
+          <Grid item md={6} xs={12}>
             <Card sx={{ minWidth: 100 }}>
               <CardContent>
                 <Stack>
-                  <Link href="/">
+                  <Link sx={{ mb: 1.2 }} href="/">
                     <img
                       src="/images/logo.png"
                       alt="logo"
@@ -446,7 +447,11 @@ export default function Home() {
                   <Link sx={{ mb: 1 }} href={`tel:${user.phone}`} style={{ textDecoration: 'none' }}>📞 {user.phone}</Link>
                   <Stack sx={{ mb: 1 }} direction={'row'} spacing={1}>
                     <img src="https://img.icons8.com/fluency/22/null/github.png" width={22} height={22} />
-                    <Link href={user.github} target="_blank" title={user.github} style={{ textDecoration: 'none' }}>GitHub</Link>
+                    <Link href={user.github} target="_blank" title={user.github} style={{ textDecoration: 'none' }}>Github.com/kylekim-dev</Link>
+                  </Stack>
+                  <Stack sx={{ mb: 1 }} direction={'row'} spacing={1}>
+                    <img src="https://img.icons8.com/fluency/22/null/linkedin.png" width={22} height={22} />
+                    <Link href={user.linkedIn} target="_blank" title={user.linkedIn} style={{ textDecoration: 'none' }}>Linkedin.com/in/kylekim-dev</Link>
                   </Stack>
                   <Stack sx={{ mb: 1 }} direction={'row'} spacing={1}>
                     <img src="https://img.icons8.com/color/22/null/microsoft-word-2019--v2.png" width={22} height={22} />
@@ -461,8 +466,8 @@ export default function Home() {
           {/* <Grid item md={4} xs={12} textAlign="center">
             <div className="badge-base LI-profile-badge" data-locale="ko_KR" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="kylekim-dev" data-version="v1"><a className="badge-base__link LI-simple-link" href="https://www.linkedin.com/in/kylekim-dev?trk=profile-badge"></a></div>
           </Grid> */}
-          <Grid item md={4} xs={12}>
-            <Card sx={{ minWidth: 100 }}>
+          <Grid item md={6} xs={12}>
+            <Card>
               <CardContent>
                 <Typography
                   typography="h4"
@@ -478,6 +483,8 @@ export default function Home() {
                   <li>HTML5 / CSS3</li>
                   <li>React / Vue.js</li>
                   <li>AWS</li>
+                  <li>Korean(Native)</li>
+                  <li>English(Limited Working Proficiency)</li>
                 </ul>
               </CardContent>
             </Card>
@@ -496,10 +503,7 @@ export default function Home() {
             </Typography>
             <Divider />
             <div>
-              I am a Full-Stack developer for over 6 years. I have experienced in Financial Institute and E-commerce.
-              In E-Commerce, I have experienced in developing CRM, WMS included inventory system, Filter management System, Technician Scheduling system, Automated invoicing system, API with payment systems(Stripe, PayPal, and Athorized.net) and 10+ responsive B2B & B2C website.
-              In Financial Institute, I have experienced in developing LOS, Pipeline, and Intranet.
-              I like the excitement of working in a faced paced environment and am very adaptable to change. I am always maintaining a positive and solution oriented approach and an active listener with the ability to focus on the requirements. As a team member, I bring strong git workflow practices and experience sing agile to build software in a collaborative environment.
+              I am a Full-Stack developer for over 6 years. I have experience in Financial institutes and E-commerce. In E-Commerce, I have experience in developing CRM, WMS included inventory systems, Filter management Systems, Technician Scheduling systems, Automated invoicing systems, API with payment systems(Stripe, PayPal, and Athorized.net), and 10+ responsive B2B & B2C websites. At Financial Institute, I have experience in developing LOS, Pipelines, and Intranets. I like the excitement of working in a faced paced environment and am very adaptable to change. I am always maintaining a positive and solution-oriented approach and an active listener with the ability to focus on the requirements. As a team member, I bring strong git workflow practices and experience using agile to build software in a collaborative environment.
             </div>
           </Grid>
           <Grid item md={6} xs={12} textAlign={{ xs: "center", md: "left" }}>
@@ -690,43 +694,42 @@ export default function Home() {
               typography="h4"
               color="default"
               fontWeight="bold"
-              align="center"
             >
-              WORKS
+              PROJECTS
             </Typography>
             <Divider />
           </Grid>
-            {
-              websites?.map((website: Website, index: number) => (
-                <Grid item md={3} xs={12}  key={`website-${website.name}-${index}`}>
+          {
+            websites?.map((website: Website, index: number) => (
+              <Grid item md={3} xs={12} key={`website-${website.name}-${index}`}>
 
-              <Card sx={{ maxWidth: 345 }}>
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    image={website.banner}
-                    alt={website.link}
-                  />
-                  <CardContent>
-                    <Typography gutterBottom fontWeight={'bold'} component="div">
-                      { website.name }
-                    </Typography>
-                    {/* <Typography variant="body2" color="text.secondary">
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image={website.banner}
+                      alt={website.link}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom fontWeight={'bold'} component="div">
+                        {website.name}
+                      </Typography>
+                      {/* <Typography variant="body2" color="text.secondary">
                       Lizards are a widespread group of squamate reptiles, with over 6,000
                       species, ranging across all continents except Antarctica
                     </Typography> */}
-                  </CardContent>
-                </CardActionArea>
-                <CardActions>
+                    </CardContent>
+                  </CardActionArea>
+                  <CardActions>
                     <Button style={{ marginLeft: "auto" }} href={website.link} target="_blank" size="small" color="primary" variant="contained" disableElevation>
                       Learn More
                     </Button>
-                </CardActions>
-              </Card>
-                </Grid>
-              ))
-            }
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))
+          }
         </Grid>
         <br />
         <br />
